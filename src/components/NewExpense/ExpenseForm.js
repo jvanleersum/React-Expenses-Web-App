@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  let displayForm = false;
+  const [displayForm, updateDisplayForm] = useState(false);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -31,20 +31,20 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
-    displayForm = false;
+    updateDisplayForm(false);
   };
 
   const cancelHandler = () => {
-    displayForm = false;
+    updateDisplayForm(false);
   };
 
   const displayFormHandler = () => {
-    displayForm = true;
+    updateDisplayForm(true);
   }
 
   if (!displayForm) {
     return (
-      <div className="new-expense__actions">
+      <div className="new-expense__display">
         <button onClick={displayFormHandler}>
           Add New Expense
         </button>
